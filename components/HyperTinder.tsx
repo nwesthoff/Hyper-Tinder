@@ -22,16 +22,17 @@ const HyperTinder = ({ users }: Props) => {
 
   return (
     <React.Fragment>
-      {users?.map((user) => (
-        <StyledTinderCard
-          key={user.id}
-          onSwipe={(dir) => onSwipe(dir, user)}
-          //   onCardLeftScreen={() => {}}
-          preventSwipe={["up", "down"]}
-        >
-          <HyperCard user={user} />
-        </StyledTinderCard>
-      ))}
+      {users?.length > 0 &&
+        users.map((user) => (
+          <StyledTinderCard
+            key={user.id}
+            onSwipe={(dir) => onSwipe(dir, user)}
+            //   onCardLeftScreen={() => {}}
+            preventSwipe={["up", "down"]}
+          >
+            <HyperCard user={user} />
+          </StyledTinderCard>
+        ))}
     </React.Fragment>
   )
 }
