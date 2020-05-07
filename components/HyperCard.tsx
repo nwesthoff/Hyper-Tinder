@@ -29,7 +29,6 @@ const StyledCardHeader = styled(CardHeader)`
 `;
 
 const StyledImageContainer = styled.img`
-  cursor: pointer;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -42,14 +41,23 @@ interface Props {
 
 const HyperCard: React.FunctionComponent<Props> = ({ user }) => {
   const [open, setOpen] = useState(false);
+  const [dragging, setDragging] = useState(false);
 
   return (
     <StyledCard>
       <StyledImageContainer
         onClick={() => setOpen(true)}
+        onTouchMove={() => setDragging(true)}
+        onTouchEnd={() => {
+          if (!dragging) {
+            setOpen(true);
+          }
+          setDragging(false);
+        }}
         src={user?.fields?.images?.[0]?.thumbnails.large.url}
       />
       <StyledCardHeader
+        onClick={() => setOpen(true)}
         title={`${user?.fields?.firstName} ${user?.fields?.lastName}`}
         subheader={
           user?.fields?.masterProgramme === "DM"
