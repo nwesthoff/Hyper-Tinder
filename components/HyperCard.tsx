@@ -1,39 +1,54 @@
-import * as React from "react"
-import styled from "styled-components"
-import {
-  Card,
-  List,
-  ListItem,
-  ListItemText,
-  CardHeader,
-  CardActions,
-  Button,
-  CardMedia,
-} from "@material-ui/core"
-import { User } from "../interfaces"
+import * as React from "react";
+import { useState } from "react";
+import styled from "styled-components";
+import { Card, CardHeader } from "@material-ui/core";
+import { User } from "../interfaces";
+import CardModal from "./CardModal";
 
 const StyledCard = styled(Card)`
   position: relative;
   box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.2);
   width: 350px;
   max-width: 100%;
-`
+  height: 100vh;
+  max-height: 500px;
+  position: relative;
+`;
+
+const StyledCardHeader = styled(CardHeader)`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  color: white;
+
+  span {
+    color: white;
+  }
+`;
 
 const StyledImageContainer = styled.img`
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
   position: center center;
-`
+`;
 
 interface Props {
-  user?: User
+  user?: User;
 }
 
 const HyperCard: React.FunctionComponent<Props> = ({ user }) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <StyledCard>
-      <CardHeader
+      <StyledImageContainer
+        onClick={() => setOpen(true)}
+        src={user?.fields?.images?.[0]?.thumbnails.large.url}
+      />
+      <StyledCardHeader
         title={`${user?.fields?.firstName} ${user?.fields?.lastName}`}
         subheader={
           user?.fields?.masterProgramme === "DM"
@@ -43,53 +58,10 @@ const HyperCard: React.FunctionComponent<Props> = ({ user }) => {
             : "undefined"
         }
       />
-      <CardMedia>
-        <StyledImageContainer
-          src={user?.fields?.images?.[0]?.thumbnails.large.url}
-        />
-      </CardMedia>
 
-      <List dense>
-        {user?.fields?.interestedIn ? (
-          <ListItem>
-            <ListItemText
-              primary="I am interested in..."
-              secondary={user?.fields?.interestedIn}
-            />
-          </ListItem>
-        ) : null}
-        {user?.fields?.companyPosition ? (
-          <ListItem>
-            <ListItemText
-              primary="Iwant to be a..."
-              secondary={user?.fields?.companyPosition}
-            />
-          </ListItem>
-        ) : null}
-        {user?.fields?.researchThis ? (
-          <ListItem>
-            <ListItemText
-              primary="I want to research..."
-              secondary={user?.fields?.researchThis}
-            />
-          </ListItem>
-        ) : null}
-      </List>
-
-      <CardActions>
-        {user?.fields?.urlLinkedin ? (
-          <Button href={`${user?.fields?.urlLinkedin}`} target="blank">
-            LinkedIn
-          </Button>
-        ) : null}
-        {user?.fields?.urlPortfolio ? (
-          <Button href={`${user?.fields?.urlPortfolio}`} target="blank">
-            Portfolio
-          </Button>
-        ) : null}
-      </CardActions>
+      <CardModal user={user} open={open} handleClose={() => setOpen(false)} />
     </StyledCard>
-  )
-}
+  );
+};
 
-export default HyperCard
+export default HyperCard;

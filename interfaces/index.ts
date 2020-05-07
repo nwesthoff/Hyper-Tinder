@@ -5,36 +5,36 @@
 // import User from 'path/to/interfaces';
 
 export type ATThumb = {
-  url: string
-  width: number
-  height: number
-}
+  url: string;
+  width: number;
+  height: number;
+};
 
 export type ATImage = {
-  id: String
-  url: String
-  filename: String
-  size: number
-  type: MimeType
+  id: string;
+  url: string;
+  filename: string;
+  size: number;
+  type: MimeType;
   thumbnails: {
-    small: ATThumb
-    large: ATThumb
-    full: ATThumb
-  }
-}
+    small: ATThumb;
+    large: ATThumb;
+    full: ATThumb;
+  };
+};
 
 export type User = {
-  id: number
+  id: number;
   fields: {
-    firstName?: string
-    lastName?: string
-    images?: ATImage[]
-    masterProgramme?: "DXD" | "DM"
-    urlLinkedin?: String
-    urlPortfolio?: String
-    email?: String
-    companyPosition?: String
-    researchThis?: String
-    interestedIn?: String
-  }
-}
+    firstName?: string;
+    lastName?: string;
+    images?: ATImage[];
+    masterProgramme?: "DXD" | "DM";
+    urlLinkedin?: string;
+    urlPortfolio?: string;
+    email?: string;
+    companyPosition?: string;
+    researchThis?: string;
+    interestedIn?: string;
+  };
+};
