@@ -27,6 +27,7 @@ const HyperTinder = ({ users }: Props) => {
         users.map((user) => (
           <StyledTinderCard
             key={user.id}
+            onCardLeftScreen={() => {}}
             onSwipe={(dir) => onSwipe(dir, user)}
             preventSwipe={["up", "down"]}
           >
