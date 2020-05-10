@@ -9,16 +9,11 @@ import {
   IconButton,
   DialogTitle,
   Dialog,
+  Grid,
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { User } from "../interfaces";
 import { Carousel } from "react-responsive-carousel";
-
-const StyledDialogTitle = styled(DialogTitle)`
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-`;
 
 const StyledImageContainer = styled.img`
   width: 100%;
@@ -39,13 +34,19 @@ const CardModal: React.FunctionComponent<Props> = ({
   handleClose,
 }) => {
   return (
-    <Dialog open={open} disableBackdropClick>
-      <StyledDialogTitle>
-        {user?.fields?.firstName + " " + user?.fields?.lastName}
-        <IconButton aria-label="close" onClick={handleClose}>
-          <CloseIcon />
-        </IconButton>
-      </StyledDialogTitle>
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle>
+        <Grid container alignItems="center" justify="space-between">
+          <Grid item>
+            {user?.fields?.firstName + " " + user?.fields?.lastName}
+          </Grid>
+          <Grid>
+            <IconButton aria-label="close" onClick={handleClose}>
+              <CloseIcon />
+            </IconButton>
+          </Grid>
+        </Grid>
+      </DialogTitle>
 
       {user?.fields?.images?.length > 1 ? (
         <Carousel
