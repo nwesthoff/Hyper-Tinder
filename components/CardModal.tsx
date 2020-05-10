@@ -47,7 +47,7 @@ const CardModal: React.FunctionComponent<Props> = ({
         </IconButton>
       </StyledDialogTitle>
 
-      {user?.fields?.images?.length > 0 ? (
+      {user?.fields?.images?.length > 1 ? (
         <Carousel
           showArrows={true}
           showThumbs={false}
@@ -61,6 +61,11 @@ const CardModal: React.FunctionComponent<Props> = ({
             />
           ))}
         </Carousel>
+      ) : user?.fields?.images?.length > 0 ? (
+        <StyledImageContainer
+          key={user?.fields?.images[0].id}
+          src={user?.fields?.images[0].thumbnails.large.url}
+        />
       ) : null}
 
       <List dense>
