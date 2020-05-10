@@ -64,6 +64,11 @@ const CardModal: React.FunctionComponent<Props> = ({
       ) : null}
 
       <List dense>
+        {user?.fields?.bio ? (
+          <ListItem dense={false}>
+            <ListItemText primary="Bio" secondary={user?.fields?.bio} />
+          </ListItem>
+        ) : null}
         {user?.fields?.interestedIn ? (
           <ListItem>
             <ListItemText

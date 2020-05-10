@@ -26,6 +26,7 @@ export type ATImage = {
 export type User = {
   id: number;
   fields: {
+    bio?: string;
     firstName?: string;
     lastName?: string;
     images?: ATImage[];
