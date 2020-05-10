@@ -66,7 +66,17 @@ const HyperCard: React.FunctionComponent<Props> = ({ user }) => {
             setDragging(true);
         }}
         onMouseUp={upHandler}
-        onTouchMove={() => setDragging(true)}
+        onTouchStart={(e) => {
+          setDragging(false);
+          setStartXY([e.touches[0].clientX, e.touches[0].clientY]);
+        }}
+        onTouchMove={(e) => {
+          if (
+            Math.abs(e.touches[0].clientX - startXY[0]) > 10 ||
+            Math.abs(e.touches[0].clientY - startXY[1]) > 10
+          )
+            setDragging(true);
+        }}
         onTouchEnd={upHandler}
         src={user?.fields?.images?.[0]?.thumbnails.large.url}
       />

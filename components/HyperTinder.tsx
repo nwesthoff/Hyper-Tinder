@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 const StyledTinderCard = styled(TinderCard)`
   position: absolute;
+  cursor: pointer;
 `;
 
 type Props = {
