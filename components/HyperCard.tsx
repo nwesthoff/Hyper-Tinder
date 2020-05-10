@@ -42,18 +42,32 @@ interface Props {
 const HyperCard: React.FunctionComponent<Props> = ({ user }) => {
   const [open, setOpen] = useState(false);
   const [dragging, setDragging] = useState(false);
+  const [startXY, setStartXY] = useState([0, 0]);
+
+  const upHandler = () => {
+    if (!dragging) {
+      setOpen(true);
+    }
+    setDragging(false);
+  };
 
   return (
     <StyledCard>
       <StyledImageContainer
-        onClick={() => setOpen(true)}
-        onTouchMove={() => setDragging(true)}
-        onTouchEnd={() => {
-          if (!dragging) {
-            setOpen(true);
-          }
+        onMouseDown={(e) => {
           setDragging(false);
+          setStartXY([e.clientX, e.clientY]);
         }}
+        onMouseMove={(e) => {
+          if (
+            Math.abs(e.clientX - startXY[0]) > 10 ||
+            Math.abs(e.clientY - startXY[1]) > 10
+          )
+            setDragging(true);
+        }}
+        onMouseUp={upHandler}
+        onTouchMove={() => setDragging(true)}
+        onTouchEnd={upHandler}
         src={user?.fields?.images?.[0]?.thumbnails.large.url}
       />
       <StyledCardHeader
