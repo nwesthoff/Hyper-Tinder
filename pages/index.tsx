@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { NextPage } from "next";
 import useSWR from "swr";
 import { fetcher } from "../utils/fetcher";
-import { Typography, CircularProgress } from "@material-ui/core";
+import { Typography, CircularProgress, Grid } from "@material-ui/core";
 
 const CenterLayout = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const CenterLayout = styled.div`
 
 const HeaderWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -36,17 +36,19 @@ const IndexPage: NextPage = () => {
 
   return (
     <Layout title="HyperTinder">
-      <CenterLayout>
-        <HeaderWrapper>
-          <HyperLogo src="/img/logo.jpeg" />
-          <Typography variant="h4" component="h1" color="textSecondary">
-            Tinder
-          </Typography>
-        </HeaderWrapper>
-      </CenterLayout>
-      <CenterLayout>
-        <HyperTinder users={data} />
-      </CenterLayout>
+      <Grid container direction="column" justify="space-between" spacing={2}>
+        <Grid item>
+          <HeaderWrapper>
+            <HyperLogo src="/img/logo.jpeg" />
+            <Typography variant="h4" component="h1" color="textSecondary">
+              Tinder
+            </Typography>
+          </HeaderWrapper>
+        </Grid>
+        <Grid item>
+          <HyperTinder users={data} />
+        </Grid>
+      </Grid>
     </Layout>
   );
 };

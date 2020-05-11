@@ -1,12 +1,12 @@
 import * as React from "react";
 import Head from "next/head";
 import styled, { createGlobalStyle } from "styled-components";
-import { Typography } from "@material-ui/core";
+import { Typography, Grid } from "@material-ui/core";
 
 const StyledFooter = styled.footer`
   position: absolute;
   bottom: 0;
-  padding: 0.8rem;
+  padding: 0.8rem 0;
   text-align: center;
   color: white;
   a {
@@ -40,15 +40,19 @@ const Layout: React.FunctionComponent<Props> = ({
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       />
     </Head>
-    {children}
-    <StyledFooter>
-      <Typography variant="body1">
-        Made with ❤️by{" "}
-        <a href="https://nilswesthoff.com" target="blank">
-          Nils
-        </a>
-      </Typography>
-    </StyledFooter>
+    <Grid container direction="column" justify="space-between">
+      <Grid item>{children}</Grid>
+      <Grid item>
+        <StyledFooter>
+          <Typography variant="body1">
+            Made with ❤️ by{" "}
+            <a href="https://nilswesthoff.com" target="blank">
+              Nils
+            </a>
+          </Typography>
+        </StyledFooter>
+      </Grid>
+    </Grid>
   </div>
 );
 

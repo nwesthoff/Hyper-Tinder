@@ -6,7 +6,6 @@ import { User } from "../interfaces";
 import CardModal from "./CardModal";
 
 const StyledCard = styled(Card)`
-  position: relative;
   box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.2);
   width: 350px;
   max-width: 100%;
