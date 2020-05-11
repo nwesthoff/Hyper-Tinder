@@ -36,19 +36,17 @@ const IndexPage: NextPage = () => {
 
   return (
     <Layout title="HyperTinder">
-      <Grid container direction="column" justify="space-between" spacing={2}>
-        <Grid item>
-          <HeaderWrapper>
-            <HyperLogo src="/img/logo.jpeg" />
-            <Typography variant="h4" component="h1" color="textSecondary">
-              Tinder
-            </Typography>
-          </HeaderWrapper>
-        </Grid>
-        <Grid item>
-          <HyperTinder users={data} />
-        </Grid>
-      </Grid>
+      <CenterLayout>
+        <HeaderWrapper>
+          <HyperLogo src="/img/logo.jpeg" />
+          <Typography variant="h4" component="h1" color="textSecondary">
+            Tinder
+          </Typography>
+        </HeaderWrapper>
+      </CenterLayout>
+      <CenterLayout>
+        <HyperTinder users={data} />
+      </CenterLayout>
     </Layout>
   );
 };
