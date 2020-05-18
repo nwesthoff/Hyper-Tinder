@@ -51,7 +51,7 @@ const HyperCard: React.FunctionComponent<Props> = ({ user }) => {
   };
 
   return (
-    <StyledCard>
+    <StyledCard elevation={0}>
       <StyledImageContainer
         onMouseDown={(e) => {
           setDragging(false);

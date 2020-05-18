@@ -41,7 +41,7 @@ const IndexPage: NextPage = () => {
         <HeaderWrapper>
           <HyperLogo src="/img/logo.jpeg" />
           <Typography variant="h4" component="h1" color="textSecondary">
-            Tinder
+            Connect <br />
           </Typography>
         </HeaderWrapper>
       </CenterLayout>
