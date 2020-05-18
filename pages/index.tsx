@@ -2,9 +2,10 @@ import Layout from "../components/Layout";
 import HyperTinder from "../components/HyperTinder";
 import styled from "styled-components";
 import { NextPage } from "next";
+import Link from "next/link";
 import useSWR from "swr";
 import { fetcher } from "../utils/fetcher";
-import { Typography, CircularProgress, Grid } from "@material-ui/core";
+import { Typography, CircularProgress } from "@material-ui/core";
 
 const CenterLayout = styled.div`
   display: flex;
@@ -46,6 +47,24 @@ const IndexPage: NextPage = () => {
       </CenterLayout>
       <CenterLayout>
         <HyperTinder users={data} />
+        <div style={{ maxWidth: "15rem", paddingTop: "2rem", color: "white" }}>
+          <Typography variant="body1" color="inherit">
+            That was the last profile. Click{" "}
+            <a
+              onClick={() => {
+                location.reload();
+              }}
+              style={{
+                color: "white",
+                textDecoration: "underline",
+                cursor: "pointer",
+              }}
+            >
+              here
+            </a>{" "}
+            to look at all profiles again.
+          </Typography>
+        </div>
       </CenterLayout>
     </Layout>
   );

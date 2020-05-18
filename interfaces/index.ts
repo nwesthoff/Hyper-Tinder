@@ -37,5 +37,7 @@ export type User = {
     companyPosition?: string;
     researchThis?: string;
     interestedIn?: string;
+    peersSayText?: string;
+    peersSayPerson?: string;
   };
 };

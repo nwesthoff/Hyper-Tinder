@@ -10,10 +10,44 @@ import {
   DialogTitle,
   Dialog,
   Grid,
+  CardContent,
+  Typography,
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { User } from "../interfaces";
 import { Carousel } from "react-responsive-carousel";
+
+const QuoteBy = styled(Typography)`
+  font-style: normal;
+  text-align: end;
+  display: block;
+  font-size: 1.2rem;
+  color: black;
+
+  &:before {
+    content: "— ";
+  }
+`;
+
+const StyledQuote = styled.blockquote`
+  font-style: italic;
+  font-size: 2rem;
+  line-height: 1.3em;
+  color: #ff7854;
+
+  &:before {
+    content: "“";
+  }
+
+  &:after {
+    content: "”";
+  }
+
+  @media (max-width: 420px) {
+    font-size: 1.6rem;
+    margin: 2rem 1.2rem;
+  }
+`;
 
 const StyledImageContainer = styled.img`
   width: 100%;
@@ -100,6 +134,15 @@ const CardModal: React.FunctionComponent<Props> = ({
           </ListItem>
         ) : null}
       </List>
+
+      <CardContent>
+        {user?.fields?.peersSayText && user.fields.peersSayPerson ? (
+          <div>
+            <StyledQuote>{user?.fields?.peersSayText}</StyledQuote>
+            <QuoteBy variant="body1">{user.fields.peersSayPerson}</QuoteBy>
+          </div>
+        ) : null}
+      </CardContent>
 
       <CardActions>
         {user?.fields?.urlLinkedin ? (
