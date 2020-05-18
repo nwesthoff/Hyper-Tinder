@@ -1,9 +1,10 @@
 import * as React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import { Card, CardHeader } from "@material-ui/core";
+import { Card, CardHeader, IconButton } from "@material-ui/core";
 import { User } from "../interfaces";
 import CardModal from "./CardModal";
+import { Info } from "@material-ui/icons";
 
 const StyledCard = styled(Card)`
   box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.2);
@@ -88,6 +89,11 @@ const HyperCard: React.FunctionComponent<Props> = ({ user }) => {
             : user?.fields?.masterProgramme === "DXD"
             ? "Digital Experience Design"
             : "undefined"
+        }
+        action={
+          <IconButton aria-label="profile">
+            <Info />
+          </IconButton>
         }
       />
 

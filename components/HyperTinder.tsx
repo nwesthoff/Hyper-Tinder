@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const StyledTinderCard = styled(TinderCard)`
   position: absolute;
-  cursor: pointer;
+  cursor: grab;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transform: rotate(${(props: { rotate: string }) => props.rotate}deg);
 `;
