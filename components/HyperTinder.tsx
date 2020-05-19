@@ -8,7 +8,11 @@ const StyledTinderCard = styled(TinderCard)`
   position: absolute;
   cursor: grab;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  transform: rotate(${(props: { rotate: string }) => props.rotate}deg);
+  transform: rotate(
+      ${(props: { rotate: string; translateX: string; translateY: string }) =>
+        props.rotate}deg
+    )
+    translate(${(props) => props.translateX + "px, " + props.translateY}px);
 `;
 
 type Props = {
@@ -29,6 +33,8 @@ const HyperTinder = ({ users }: Props) => {
         users.map((user) => (
           <StyledTinderCard
             rotate={(Math.random() * 5 - 2.5).toFixed(0)}
+            translateX={(Math.random() * 20 - 10).toFixed(0)}
+            translateY={(Math.random() * 20 - 10).toFixed(0)}
             key={user.id}
             onCardLeftScreen={() => {}}
             onSwipe={(dir) => onSwipe(dir, user)}
